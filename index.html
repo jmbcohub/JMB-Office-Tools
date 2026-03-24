@@ -388,7 +388,8 @@ body { background: var(--bg); }
 .lbl-bar-track{flex:1;height:4px;border-radius:3px;background:var(--border);overflow:hidden;}
 .lbl-wrap .field-row{padding-top:1px;padding-bottom:1px;}
 .lbl-wrap .section-label{margin-top:5px;margin-bottom:2px;padding-top:5px;padding-bottom:2px;}
-.lbl-wrap .fields{padding-bottom:0;}
+.lbl-wrap .fields{padding-bottom:0;padding-left:0;padding-right:0;}
+.lbl-wrap .field-label{width:100px;}
 .lbl-wrap input.fi,.lbl-wrap select.fi{padding:5px 10px;}
 #lbl-row-bars{padding:2px 0 1px !important;}
 .lbl-wrap .lbl-preview-box,.lbl-wrap .lbl-count-row,.lbl-wrap #lbl-dim-bar,.lbl-wrap .lbl-print-card{margin-left:20px;margin-right:20px;}
@@ -2027,7 +2028,7 @@ function confirmDeleteProject(id){
   id=+id;
   var projects=getProjList();
   var p=projects.find(function(x){return +x.id===id;});if(!p)return;
-  jcConfirm('Delete "'+p.name+'"? All notes and timesheets will be permanently removed.',function(){
+  jcConfirm('Delete "'+p.name+'" — All schedules will be permanently removed.',function(){
     var ps=getProjList().filter(function(x){return +x.id!==id;});
     localStorage.setItem('jc_projects',JSON.stringify(ps));
     var ns=_lsGet('jc_notes',[]).filter(function(n){return +n.projectId!==id;});
