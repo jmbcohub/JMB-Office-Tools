@@ -171,7 +171,7 @@ body { background: var(--bg); }
   @media (hover: hover) { .tab-btn:hover:not(.active) { background: #2a2a2a; } }
 
   .tab-panel { display: none; }
-  .tab-panel.active { display: flex; flex-direction: column; flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; background: var(--bg); }
+  .tab-panel.active { display: flex; flex-direction: column; flex: 1; overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch; background: var(--bg); }
 
   /* ── Section labels ── */
   .section-label {
@@ -5314,5 +5314,6 @@ select.fi option { background: #ffffff !important; color: #1e293b !important; }
   window.addEventListener('load',initAll);
 })();
 </script>
+
 </body>
 </html>
