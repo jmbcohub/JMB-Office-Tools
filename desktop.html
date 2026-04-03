@@ -853,6 +853,90 @@ body:not(.light-mode) .pn-picker-sheet{background:var(--card);}
 body:not(.light-mode) .pn-picker-title{color:var(--muted);}
 body:not(.light-mode) .pn-picker-btn{background:var(--surface);border-color:var(--border);color:var(--text);}
 body:not(.light-mode) .pn-picker-btn.pn-picker-active{background:#60a5fa!important;border-color:#3b82f6!important;color:#0d1f3c!important;}
+
+/* ─────────────────────────────────────────────
+   LABOR RATE CALCULATOR
+   IBEW Local 103 · Electrical + TelCom
+   Effective Mar 1 – Aug 31, 2026
+   ───────────────────────────────────────────── */
+#tab-labor{background:var(--bg);}
+.lr-pad{padding:20px 20px 60px;max-width:960px;margin:0 auto;width:100%;box-sizing:border-box;}
+.lr-shift-bar{display:flex;gap:3px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:3px;margin-bottom:12px;}
+.lr-shift-btn{flex:1;background:transparent;border:none;border-radius:7px;color:var(--sub);font-family:'Inter',sans-serif;font-size:11px;font-weight:600;padding:7px 2px;cursor:pointer;transition:background .15s,color .15s;white-space:nowrap;}
+.lr-shift-btn.active{background:var(--accent);color:#fff;}
+.lr-toggle{position:relative;display:inline-block;width:40px;height:23px;flex-shrink:0;}
+.lr-toggle input{opacity:0;width:0;height:0;position:absolute;}
+.lr-toggle-slider{position:absolute;inset:0;background:var(--border2);border-radius:12px;cursor:pointer;transition:background .2s;}
+.lr-toggle-slider::before{content:'';position:absolute;width:17px;height:17px;left:3px;top:3px;background:#fff;border-radius:50%;transition:transform .2s;}
+.lr-toggle input:checked+.lr-toggle-slider{background:var(--accent);}
+.lr-toggle input:checked+.lr-toggle-slider::before{transform:translateX(17px);}
+.lr-worker-row{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:9px 10px;margin-bottom:6px;}
+.lr-worker-trade-badge{font-size:9px;font-weight:700;padding:2px 5px;border-radius:4px;flex-shrink:0;letter-spacing:.5px;text-transform:uppercase;}
+.lr-worker-trade-badge.elec{background:#1e3a8a22;color:#60a5fa;border:1px solid #1e3a8a55;}
+.lr-worker-trade-badge.tel{background:#14532d22;color:#4ade80;border:1px solid #14532d44;}
+.lr-worker-class{flex:1;font-size:13px;font-weight:500;color:var(--text);min-width:0;}
+.lr-worker-rate{font-size:13px;font-weight:700;color:var(--text);font-family:'Roboto Mono',monospace;flex-shrink:0;}
+.lr-worker-ct{font-size:11px;font-weight:700;color:var(--sub);background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:2px 6px;flex-shrink:0;font-family:'Roboto Mono',monospace;}
+.lr-worker-rm{width:24px;height:24px;background:transparent;border:1px solid var(--border2);border-radius:6px;color:var(--sub);font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s,color .15s;padding:0;line-height:1;}
+.lr-worker-rm:active{background:var(--red-bg);color:var(--red);border-color:var(--red-bdr);}
+.lr-empty{text-align:center;padding:22px 0;color:var(--sub);font-size:13px;border:1px dashed var(--border2);border-radius:10px;margin-bottom:10px;line-height:1.7;}
+.lr-add-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:12px;}
+.lr-add-header{font-size:10px;font-weight:700;color:var(--sub);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:8px;}
+.lr-trade-bar{display:flex;border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:8px;}
+.lr-trade-btn{flex:1;background:transparent;border:none;color:var(--sub);font-size:12px;font-weight:600;padding:8px 0;cursor:pointer;transition:background .15s,color .15s;font-family:'Inter',sans-serif;}
+.lr-trade-btn.active{background:var(--accent);color:#fff;}
+.lr-trade-btn:not(.active):first-child{border-right:1px solid var(--border);}
+.lr-add-row{display:flex;gap:6px;align-items:stretch;}
+.lr-add-btn{background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:700;padding:0 16px;cursor:pointer;white-space:nowrap;font-family:'Inter',sans-serif;}
+.lr-summary-card{background:var(--surface);border:1.5px solid var(--border);border-radius:13px;padding:16px;margin-bottom:12px;}
+.lr-summary-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px;}
+.lr-blended-rate{font-family:'Roboto Mono',monospace;font-size:36px;font-weight:700;color:var(--accent);letter-spacing:-1.5px;line-height:1;}
+.lr-blended-label{font-size:10px;color:var(--sub);letter-spacing:1.5px;text-transform:uppercase;margin-top:4px;}
+.lr-crew-badge{background:var(--surface2);border:1px solid var(--border);border-radius:8px;font-size:11px;font-weight:600;color:var(--sub);padding:5px 10px;white-space:nowrap;}
+.lr-goal-bar{display:flex;align-items:center;gap:8px;background:var(--surface2);border:1px solid var(--border);border-radius:9px;padding:8px 12px;}
+.lr-goal-label{font-size:11px;font-weight:600;color:var(--sub);flex-shrink:0;}
+.lr-goal-input-wrap{display:flex;align-items:center;gap:3px;flex:1;}
+.lr-dollar{font-size:13px;color:var(--sub);}
+.lr-goal-input{background:transparent;border:none;color:var(--text);font-family:'Roboto Mono',monospace;font-size:15px;font-weight:600;width:100%;outline:none;}
+.lr-goal-input::placeholder{color:var(--muted);}
+.lr-goal-pill{font-size:11px;font-weight:700;padding:4px 10px;border-radius:6px;white-space:nowrap;flex-shrink:0;background:var(--surface2);color:var(--sub);border:1px solid var(--border);transition:all .2s;}
+.lr-goal-pill.under{background:#14532d22;color:#16a34a;border-color:#14532d55;}
+.lr-goal-pill.over{background:#7f1d1d33;color:#f87171;border-color:#7f1d1d66;}
+.lr-goal-pill.exact{background:var(--accent-lt);color:var(--accent);border-color:var(--accent-bdr);}
+/* Inner sub-tabs */
+.lr-inner-tab-bar{display:flex;border-bottom:1.5px solid var(--border);margin-bottom:16px;}
+.lr-inner-tab{flex:1;background:transparent;border:none;border-bottom:2.5px solid transparent;color:var(--sub);font-family:'Inter',sans-serif;font-size:13px;font-weight:600;padding:10px 8px 8px;cursor:pointer;transition:color .15s,border-color .15s;margin-bottom:-1.5px;}
+.lr-inner-tab.active{color:var(--accent);border-bottom-color:var(--accent);}
+.lr-panel{max-width:560px;margin:0 auto;}
+.lr-bb-msg{display:flex;align-items:flex-start;gap:8px;border-radius:9px;padding:10px 12px;margin-bottom:8px;font-size:12px;line-height:1.4;}
+.lr-bb-msg.warn{background:var(--amber-bg);border:1px solid var(--amber-bdr);color:var(--amber);}
+.lr-bb-msg.ok{background:var(--green-bg);border:1px solid var(--green-bdr);color:#60a5fa;}
+.lr-sec-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.lr-sec-row .section-label{margin:0;flex:1;}
+.lr-bb-toggle-wrap{display:flex;align-items:center;gap:6px;flex-shrink:0;}
+.lr-bb-toggle-lbl{font-size:11px;font-weight:600;color:var(--sub);}
+.lr-opt-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:14px;}
+.lr-opt-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.lr-opt-row:last-of-type{margin-bottom:0;}
+.lr-opt-lbl{font-size:12px;font-weight:600;color:var(--sub);flex-shrink:0;min-width:74px;}
+.lr-seg{display:flex;border:1px solid var(--border);border-radius:7px;overflow:hidden;flex:1;}
+.lr-seg-btn{flex:1;background:transparent;border:none;color:var(--sub);font-size:12px;font-weight:600;padding:7px 0;cursor:pointer;transition:background .15s,color .15s;font-family:'Inter',sans-serif;}
+.lr-seg-btn.active{background:var(--accent);color:#fff;}
+.lr-seg-btn:not(:last-child){border-right:1px solid var(--border);}
+.lr-run-btn{width:100%;background:var(--accent);color:#fff;border:none;border-radius:9px;font-size:14px;font-weight:700;padding:12px;cursor:pointer;font-family:'Inter',sans-serif;margin-top:12px;letter-spacing:.2px;}
+.lr-result-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:12px;}
+.lr-result-header{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:12px;margin-bottom:12px;border-bottom:1px solid var(--border);}
+.lr-result-rate{font-family:'Roboto Mono',monospace;font-size:28px;font-weight:700;color:var(--text);}
+.lr-result-meta{font-size:11px;color:var(--sub);margin-top:3px;}
+.lr-delta-pill{font-size:12px;font-weight:700;padding:4px 10px;border-radius:6px;}
+.lr-delta-pill.under{background:#14532d33;color:#4ade80;border:1px solid #14532d55;}
+.lr-delta-pill.over{background:#7f1d1d33;color:#f87171;border:1px solid #7f1d1d55;}
+.lr-result-row{display:flex;align-items:center;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border);font-size:13px;}
+.lr-result-row:last-child{border-bottom:none;}
+.lr-result-row-name{color:var(--text);font-weight:500;}
+.lr-result-row-ct{color:var(--sub);font-size:11px;margin-left:3px;}
+.lr-result-row-rate{font-family:'Roboto Mono',monospace;font-size:12px;color:var(--sub);}
+.lr-auto-gf-note{background:var(--amber-bg);border:1px solid var(--amber-bdr);border-radius:8px;padding:9px 12px;margin-top:10px;font-size:11px;color:var(--amber);line-height:1.4;}
 </style>
 </script>
 <script>
@@ -876,11 +960,11 @@ if('serviceWorker' in navigator){
         <img alt="JMB" class="app-hdr-logo" id="app-hdr-logo" src=""/>
       </div>
       <div class="app-hdr-text">
-        <span class="app-hdr-title">JMB Office Tools</span>
-        <span class="app-hdr-sub">Labels &amp; Schedules</span>
+        <span class="app-hdr-title">OFFICE TOOLS</span>
+        <span class="app-hdr-sub" style="font-size:7.5px;letter-spacing:0.10em;">Labels &middot; Schedules &middot; Rates</span>
       </div>
     </div>
-    <div class="app-hdr-pill">v2.0</div>
+    <div class="app-hdr-pill">v3.0</div>
   </div>
 </div>
 <div class="tab-bar">
@@ -899,6 +983,7 @@ if('serviceWorker' in navigator){
 <button class="tab-btn active" id="tab-btn-labels" onclick="switchTab('labels',this)">Labels</button>
 <button class="tab-btn" id="tab-btn-pn" onclick="switchTab('pn',this)">Panel Schedule</button>
 <button class="tab-btn" id="tab-btn-notes" onclick="switchTab('notes',this)">Projects</button>
+<button class="tab-btn" id="tab-btn-labor" onclick="switchTab('labor',this)">Labor Rate</button>
 
 
 
@@ -1417,9 +1502,77 @@ Import / Restore</button>
 
 
 
-<div class="app-footer">
-<span style="font-family:'Roboto Mono',monospace; font-size:8px; letter-spacing:1px;">© 2026 JMB Office Tools · For reference only — verify with licensed electrician and local AHJ.</span>
+<!-- ══════════════════════════════════════════
+     TAB: LABOR RATE CALCULATOR
+     ══════════════════════════════════════════ -->
+<div class="tab-panel" id="tab-labor">
+<div class="lr-pad">
+
+<!-- ── Crew Builder ── -->
+<div class="lr-panel" id="lr-panel-builder">
+  <div class="lr-sec-row">
+    <div class="section-label">Crew Builder</div>
+    <div class="sel-wrap" style="margin-right:8px;min-width:118px;">
+      <select class="fi" id="lr-builder-trade" onchange="lrSetTrade(this.value)">
+        <option value="elec">⚡ Electrical</option>
+        <option value="tel">📡 Telecom</option>
+      </select>
+    </div>
+    <div class="lr-bb-toggle-wrap">
+      <span class="lr-bb-toggle-lbl">Blue Book</span>
+      <label class="lr-toggle"><input type="checkbox" id="lr-bb-on" checked onchange="lrRender()"/><span class="lr-toggle-slider"></span></label>
+    </div>
+    <div class="lr-bb-toggle-wrap" style="margin-left:10px;">
+      <span class="lr-bb-toggle-lbl">Mkt Recovery</span>
+      <label class="lr-toggle"><input type="checkbox" id="lr-mr-on" onchange="lrBuildClassSel();lrRender()"/><span class="lr-toggle-slider"></span></label>
+    </div>
+  </div>
+
+  <div class="lr-shift-bar">
+    <button class="lr-shift-btn active" data-shift="st" onclick="lrSetShift('st',this)">ST</button>
+    <button class="lr-shift-btn" data-shift="ot" onclick="lrSetShift('ot',this)">OT 1.5×</button>
+    <button class="lr-shift-btn" data-shift="dt" onclick="lrSetShift('dt',this)">DT 2×</button>
+    <button class="lr-shift-btn" data-shift="s2" onclick="lrSetShift('s2',this)">2nd Shift</button>
+    <button class="lr-shift-btn" data-shift="s3" onclick="lrSetShift('s3',this)">3rd Shift</button>
+  </div>
+
+  <div id="lr-worker-list"></div>
+
+  <div class="lr-add-card">
+    <div class="lr-add-header">Add Worker</div>
+    <div class="lr-add-row">
+      <div class="sel-wrap" style="flex:1;"><select class="fi" id="lr-add-class"></select></div>
+      <input type="number" id="lr-add-qty" class="fi" value="1" min="1" max="50" style="width:52px;text-align:center;" inputmode="numeric"/>
+      <button class="lr-add-btn" onclick="lrAddWorker()">+ Add</button>
+    </div>
+  </div>
+
+  <div class="lr-summary-card">
+    <div class="lr-summary-top">
+      <div>
+        <div class="lr-blended-rate" id="lr-blended-rate">$—</div>
+        <div class="lr-blended-label" id="lr-blended-label">Blended Rate / hr</div>
+        <div class="lr-mr-gross" id="lr-mr-gross" style="display:none;font-size:11px;color:var(--sub);margin-top:2px;"></div>
+      </div>
+      <div class="lr-crew-badge" id="lr-crew-badge">0 workers</div>
+    </div>
+    <div class="lr-goal-bar" id="lr-mr-row" style="display:none;margin-bottom:6px;">
+      <span class="lr-goal-label">Recovery</span>
+      <div class="lr-goal-input-wrap">
+        <span class="lr-dollar">$</span>
+        <input type="number" id="lr-mr-input" class="lr-goal-input" placeholder="0.00" inputmode="decimal" oninput="lrRender()"/>
+      </div>
+      <span style="font-size:12px;color:var(--sub);">/hr</span>
+    </div>
+  </div>
+
+  <div id="lr-bb-status"></div>
 </div>
+
+
+</div><!-- /lr-pad -->
+</div><!-- /tab-labor -->
+
 </div><!-- calc-wrap -->
 <script>
 function makeBlock(st,lbl,badge,val,sub){return'<div class="result-block '+st+'"><div class="result-head"><span class="result-lbl">'+lbl+'</span>'+(badge?'<span class="result-badge">'+badge+'</span>':'')+'</div><div class="result-val">'+val+'</div>'+(sub?'<div class="result-sub">'+sub+'</div>':'')+'</div>';}
@@ -4463,6 +4616,219 @@ function lblPdfFontSize(doc,text,maxW,maxSz){
   return 5;
 }
 
+// ════════════════════════════════════════════════════════
+// LABOR RATE CALCULATOR  ·  IBEW Local 103
+// Electrical (JMB) + TelCom (Spectrum)
+// Effective: March 1 – August 31, 2026
+// ════════════════════════════════════════════════════════
+var LR_ELEC = {
+  'General Foreman':{lbl:'General Foreman',   st:169.75,ot:214.15,dt:258.55,s2:190.05,s3:206.60,isGF:true, isSup:true,grp:'Supervision'},
+  'Foreman':        {lbl:'Foreman',            st:159.25,ot:199.95,dt:240.65,s2:177.80,s3:193.00,isF:true,  isSup:true,grp:'Supervision'},
+  'Journeyman':     {lbl:'Journeyman',         st:141.50,ot:178.50,dt:215.50,s2:158.40,s3:172.20,isJW:true, isSup:true,grp:'Journeyman'},
+  'App 5th Yr': {lbl:'App \u2014 5th Year (Avg)',st:112.18,ot:139.00,dt:165.80,s2:124.40,s3:134.40,isApp:true,grp:'Apprentice'},
+  'App J':      {lbl:'10th Period (J)',           st:114.85,ot:142.60,dt:170.30,s2:127.50,s3:137.85,isApp:true,grp:'Apprentice'},
+  'App I':      {lbl:'9th Period (I)',           st:109.50,ot:135.40,dt:161.30,s2:121.30,s3:130.95,isApp:true,grp:'Apprentice'},
+  'App 4th Yr': {lbl:'App \u2014 4th Year (Avg)',st:101.48,ot:124.60,dt:147.73,s2:112.03,s3:120.65,isApp:true,grp:'Apprentice'},
+  'App H':      {lbl:'8th Period (H)',           st:104.15,ot:128.20,dt:152.25,s2:115.10,s3:124.10,isApp:true,grp:'Apprentice'},
+  'App G':      {lbl:'7th Period (G)',           st:98.80, ot:121.00,dt:143.20,s2:108.95,s3:117.20,isApp:true,grp:'Apprentice'},
+  'App 3rd Yr': {lbl:'App \u2014 3rd Year (Avg)',st:90.80, ot:110.23,dt:129.65,s2:99.65, s3:106.90,isApp:true,grp:'Apprentice'},
+  'App F':      {lbl:'6th Period (F)',           st:93.45, ot:113.80,dt:134.15,s2:102.75,s3:110.35,isApp:true,grp:'Apprentice'},
+  'App E':      {lbl:'5th Period (E)',           st:88.15, ot:106.65,dt:125.15,s2:96.55, s3:103.45,isApp:true,grp:'Apprentice'},
+  'App 2nd Yr': {lbl:'App \u2014 2nd Year (Avg)',st:82.80, ot:99.45, dt:116.10,s2:90.40, s3:96.60, isApp:true,grp:'Apprentice'},
+  'App D':      {lbl:'4th Period (D)',           st:82.80, ot:99.45, dt:116.10,s2:90.40, s3:96.60, isApp:true,grp:'Apprentice'},
+  'App C':      {lbl:'3rd Period (C)',           st:82.80, ot:99.45, dt:116.10,s2:90.40, s3:96.60, isApp:true,grp:'Apprentice'},
+  'App 1st Yr': {lbl:'App \u2014 1st Year (Avg)',st:61.25, ot:76.05, dt:90.85, s2:68.00, s3:73.50, isApp:true,grp:'Apprentice'},
+  'App B':      {lbl:'2nd Period (B)',           st:61.25, ot:76.05, dt:90.85, s2:68.00, s3:73.50, isApp:true,grp:'Apprentice'},
+  'App A':      {lbl:'1st Period (A)',           st:61.25, ot:76.05, dt:90.85, s2:68.00, s3:73.50, isApp:true,grp:'Apprentice'},
+  'CW1':        {lbl:'Construction Wiremen (CW1)',  st:24.95, ot:36.88, dt:48.81, s2:30.40, s3:34.84, grp:'CW'},
+};
+var LR_TEL = {
+  'General Foreman':{lbl:'General Foreman',   st:142.00,ot:177.50,dt:213.00,s2:158.35,s3:171.75,isGF:true, isSup:true,grp:'Supervision'},
+  'Foreman':        {lbl:'Foreman',            st:133.55,ot:166.10,dt:198.65,s2:148.55,s3:160.80,isF:true,  isSup:true,grp:'Supervision'},
+  'Senior Tech':    {lbl:'Senior Tech',         st:123.10,ot:154.15,dt:185.25,s2:137.40,s3:149.10,isJW:true, isSup:true,grp:'Journey'},
+  'Technician':     {lbl:'Technician',          st:119.15,ot:148.75,dt:178.35,s2:132.80,s3:143.90,isJW:true, isSup:true,grp:'Journey'},
+  'App 5th Yr': {lbl:'App \u2014 5th Year (Avg)',st:99.75, ot:122.70,dt:145.63,s2:110.33,s3:118.98,isApp:true,grp:'Apprentice'},
+  'App J':      {lbl:'10th Period (J)',           st:101.90,ot:125.60,dt:149.25,s2:112.80,s3:121.75,isApp:true,grp:'Apprentice'},
+  'App I':      {lbl:'9th Period (I)',           st:97.60, ot:119.80,dt:142.00,s2:107.85,s3:116.20,isApp:true,grp:'Apprentice'},
+  'App 4th Yr': {lbl:'App \u2014 4th Year (Avg)',st:91.15, ot:111.14,dt:131.13,s2:100.35,s3:107.88,isApp:true,grp:'Apprentice'},
+  'App H':      {lbl:'8th Period (H)',           st:93.30, ot:114.03,dt:134.75,s2:102.85,s3:110.65,isApp:true,grp:'Apprentice'},
+  'App G':      {lbl:'7th Period (G)',           st:89.00, ot:108.25,dt:127.50,s2:97.85, s3:105.10,isApp:true,grp:'Apprentice'},
+  'App 3rd Yr': {lbl:'App \u2014 3rd Year (Avg)',st:82.50, ot:99.53, dt:116.55,s2:90.35, s3:96.78, isApp:true,grp:'Apprentice'},
+  'App F':      {lbl:'6th Period (F)',           st:84.65, ot:102.43,dt:120.20,s2:92.85, s3:99.55, isApp:true,grp:'Apprentice'},
+  'App E':      {lbl:'5th Period (E)',           st:80.35, ot:96.63, dt:112.90,s2:87.85, s3:94.00, isApp:true,grp:'Apprentice'},
+  'App 2nd Yr': {lbl:'App \u2014 2nd Year (Avg)',st:76.05, ot:90.85, dt:105.65,s2:82.85, s3:88.45, isApp:true,grp:'Apprentice'},
+  'App D':      {lbl:'4th Period (D)',           st:76.05, ot:90.85, dt:105.65,s2:82.85, s3:88.45, isApp:true,grp:'Apprentice'},
+  'App C':      {lbl:'3rd Period (C)',           st:76.05, ot:90.85, dt:105.65,s2:82.85, s3:88.45, isApp:true,grp:'Apprentice'},
+  'App 1st Yr': {lbl:'App \u2014 1st Year (Avg)',st:55.85, ot:69.18, dt:82.50, s2:62.00, s3:67.00, isApp:true,grp:'Apprentice'},
+  'App B':      {lbl:'2nd Period (B)',           st:55.85, ot:69.18, dt:82.50, s2:62.00, s3:67.00, isApp:true,grp:'Apprentice'},
+  'App A':      {lbl:'1st Period (A)',           st:55.85, ot:69.18, dt:82.50, s2:62.00, s3:67.00, isApp:true,grp:'Apprentice'},
+  'CW1':        {lbl:'Construction Wiremen (CW1)', st:24.95, ot:36.88, dt:48.81, s2:30.40, s3:34.84, grp:'CW'}
+};
+
+var lrWorkers=[], lrWid=1, lrShift='st', lrActiveTrade='elec';
+
+function lrData(t){return t==='elec'?LR_ELEC:LR_TEL;}
+function lrRate(d,s){return d[s]||d.st;}
+function lrFmt(n){return '$'+n.toFixed(2);}
+
+function lrSetShift(s,btn){
+  lrShift=s;
+  document.querySelectorAll('.lr-shift-btn').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  lrRender();
+}
+
+function lrSetTrade(t){
+  lrActiveTrade=t;
+  lrBuildClassSel();
+  lrRender();
+}
+
+function lrBuildClassSel(){
+  var sel=document.getElementById('lr-add-class');
+  if(!sel)return;
+  var data=lrData(lrActiveTrade);
+  var mrOn=!!(document.getElementById('lr-mr-on')&&document.getElementById('lr-mr-on').checked);
+  var grpOrder=['Supervision','Journeyman','Journey','Apprentice','Office'];
+  if(mrOn)grpOrder.push('CW');
+  var grpLabels={Supervision:'Supervision',Journeyman:'Journeyman',Journey:'Journeyman Level',Apprentice:'Apprentice',CW:'Construction Wiremen',Office:'Office'};
+  var groups={};
+  Object.keys(data).forEach(function(k){
+    var g=data[k].grp||'Other';
+    if(!groups[g])groups[g]=[];
+    groups[g].push(k);
+  });
+  sel.innerHTML='';
+  grpOrder.forEach(function(g){
+    if(!groups[g])return;
+    var og=document.createElement('optgroup');
+    og.label=grpLabels[g]||g;
+    groups[g].forEach(function(k){
+      var o=document.createElement('option');
+      o.value=k; o.textContent=data[k].lbl;
+      og.appendChild(o);
+    });
+    sel.appendChild(og);
+  });
+}
+
+function lrAddWorker(){
+  var sel=document.getElementById('lr-add-class');
+  if(!sel||!sel.value)return;
+  var qty=Math.max(1,parseInt(document.getElementById('lr-add-qty').value)||1);
+  for(var i=0;i<qty;i++) lrWorkers.push({id:lrWid++,trade:lrActiveTrade,key:sel.value});
+  lrRender();
+}
+
+window.lrRemoveWorker=function(id){
+  lrWorkers=lrWorkers.filter(function(w){return w.id!==id;});
+  lrRender();
+};
+window.lrRemoveOneByType=function(trade,key){
+  for(var i=lrWorkers.length-1;i>=0;i--){
+    if(lrWorkers[i].trade===trade&&lrWorkers[i].key===key){lrWorkers.splice(i,1);break;}
+  }
+  lrRender();
+};
+
+function lrRender(){
+  var listEl=document.getElementById('lr-worker-list');
+  var rateEl=document.getElementById('lr-blended-rate');
+  var badgeEl=document.getElementById('lr-crew-badge');
+  if(!listEl)return;
+  var shift=lrShift;
+  var bbOn=!!(document.getElementById('lr-bb-on')&&document.getElementById('lr-bb-on').checked);
+  var trade=lrActiveTrade;
+
+  // Worker list — current trade only, grouped by type, sorted high to low by rate
+  var tradeWorkers=lrWorkers.filter(function(w){return w.trade===trade;});
+  var sorted=tradeWorkers.slice().sort(function(a,b){
+    var da=lrData(a.trade)[a.key], db=lrData(b.trade)[b.key];
+    return (db?lrRate(db,shift):0)-(da?lrRate(da,shift):0);
+  });
+  var groups=[],groupMap={};
+  sorted.forEach(function(w){
+    var gk=w.key;
+    if(groupMap[gk]!=null){groups[groupMap[gk]].count++;}
+    else{groupMap[gk]=groups.length;groups.push({trade:w.trade,key:w.key,count:1});}
+  });
+  if(groups.length===0){
+    listEl.innerHTML='<div class="lr-empty">No workers added yet<br><small style="font-size:11px;">Use the form below to build your crew</small></div>';
+  } else {
+    listEl.innerHTML=groups.map(function(g){
+      var d=lrData(g.trade)[g.key]; if(!d)return'';
+      var rate=lrRate(d,shift);
+      return '<div class="lr-worker-row">'+
+        '<span class="lr-worker-class">'+d.lbl+'</span>'+
+        '<span class="lr-worker-ct">\u00d7'+g.count+'</span>'+
+        '<span class="lr-worker-rate">'+lrFmt(rate)+'</span>'+
+        '<button class="lr-worker-rm" onclick="lrRemoveOneByType(\''+g.trade+'\',\''+g.key+'\')">&#x00D7;</button>'+
+        '</div>';
+    }).join('');
+  }
+
+  // Blended rate — current trade only
+  var totalCost=0, n=tradeWorkers.length;
+  tradeWorkers.forEach(function(w){var d=lrData(w.trade)[w.key];if(d)totalCost+=lrRate(d,shift);});
+  var blended=n>0?totalCost/n:0;
+
+  // Market Recovery
+  var mrOn=!!(document.getElementById('lr-mr-on')&&document.getElementById('lr-mr-on').checked);
+  var mrRow=document.getElementById('lr-mr-row');
+  var mrGross=document.getElementById('lr-mr-gross');
+  var lblEl=document.getElementById('lr-blended-label');
+  var mrVal=0;
+  if(mrRow)mrRow.style.display=mrOn?'flex':'none';
+  if(mrOn){
+    mrVal=parseFloat((document.getElementById('lr-mr-input')||{}).value)||0;
+  }
+  var displayRate=n>0?blended-mrVal:0;
+  if(rateEl)rateEl.textContent=n>0?lrFmt(displayRate):'$\u2014';
+  if(lblEl)lblEl.textContent=mrOn?'Bid Rate / hr':'Blended Rate / hr';
+  if(mrGross){
+    if(mrOn&&n>0&&mrVal>0){
+      mrGross.style.display='block';
+      mrGross.textContent='Gross '+lrFmt(blended)+' \u00b7 \u2212$'+mrVal.toFixed(2)+' recovery';
+    } else { mrGross.style.display='none'; }
+  }
+  if(badgeEl)badgeEl.textContent=n+' worker'+(n!==1?'s':'');
+
+  lrCheckBB(bbOn,shift,trade,tradeWorkers);
+}
+
+function lrCheckBB(bbOn,shift,trade,workers){
+  var el=document.getElementById('lr-bb-status'); if(!el)return;
+  if(!bbOn||!workers||workers.length===0){el.innerHTML='';return;}
+  var nGF=0,nF=0,nJW=0,nApp=0;
+  workers.forEach(function(w){
+    var d=lrData(w.trade)[w.key]; if(!d)return;
+    if(d.isGF)nGF++; else if(d.isF)nF++; else if(d.isJW)nJW++; else if(d.isApp)nApp++;
+  });
+  var total=workers.length, sups=nGF+nF+nJW, warns=[];
+  if(trade==='elec'){
+    if(nApp>0&&sups===0) warns.push('No supervisor \u2014 apprentices require JW or Foreman at all times (\u00a73.13)');
+    if(sups>0){var maxApp=Math.ceil(sups/3)*2; if(nApp>maxApp) warns.push('Ratio exceeded: '+nApp+' app for '+sups+' supervisor'+(sups!==1?'s':'')+' \u2014 max '+maxApp+' (\u00a73.12: 2 per 3 JW)');}
+    if(total>=5&&nF===0&&nGF===0) warns.push('Foreman required at crew of '+total+' (\u00a76.12)');
+    if(total>=20&&nGF===0) warns.push('General Foreman required at '+total+' workers (\u00a76.11)');
+  } else {
+    if(nApp>0&&nJW===0&&nF===0&&nGF===0) warns.push('No technician \u2014 apprentices must work with a Technician (\u00a76.20 1:1 ratio)');
+    if(nJW>0&&nApp>nJW) warns.push('Ratio exceeded: '+nApp+' apprentice'+(nApp!==1?'s':'')+' for '+nJW+' technician'+(nJW!==1?'s':'')+' \u2014 max 1:1 (\u00a76.31)');
+    if(total>=4&&nF===0&&nGF===0) warns.push('Supervisor required at crew of '+total+' (\u00a76.18: Sub-Foreman at 4+)');
+    if(total>=6&&nF===0&&nGF===0) warns.push('Foreman required at crew of '+total+' (\u00a76.18: Foreman at 6+)');
+    if(total>=11&&nGF===0) warns.push('General Foreman required at '+total+' workers (\u00a76.18: GF at 11+)');
+  }
+  if(warns.length===0){
+    el.innerHTML='<div class="lr-bb-msg ok">\u2713 Compliant with IBEW Local 103 CBA</div>';
+  } else {
+    el.innerHTML=warns.map(function(w){return'<div class="lr-bb-msg warn">\u26a0 '+w+'</div>';}).join('');
+  }
+}
+
+document.addEventListener('DOMContentLoaded',function(){
+  lrBuildClassSel();
+  lrRender();
+});
+
 </script>
 <!-- Photo Lightbox -->
 <div class="photo-lightbox" id="photo-lightbox" onclick="closeLightbox()">
@@ -4750,16 +5116,16 @@ body {
   overflow: visible;
 }
 .app-hdr-logo-wrap {
-  width: 130px;
-  height: 130px;
+  width: 88px;
+  height: 88px;
   flex-shrink: 0;
   overflow: visible;
   position: relative;
   z-index: 10;
 }
 .app-hdr-logo {
-  width: 130px;
-  height: 130px;
+  width: 88px;
+  height: 88px;
   object-fit: contain;
   display: block;
   position: absolute;
@@ -4803,7 +5169,7 @@ body {
 /* ── Tab bar ── */
 .tab-bar {
   display: grid !important;
-  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
   overflow: visible !important;
   background: #ffffff !important;
   border-bottom: 1px solid #e2e8f0 !important;
@@ -4841,7 +5207,7 @@ body {
 .tab-panel.active {
   background: #f8fafc !important;
 }
-#tab-notes, #tab-labels, #tab-pn { background: #f8fafc !important; }
+#tab-notes, #tab-labels, #tab-pn, #tab-labor { background: #f8fafc !important; }
 .calc-wrap { background: #f8fafc !important; }
 
 /* ── Section labels ── */
@@ -5208,6 +5574,16 @@ select.fi option { background: #ffffff !important; color: #1e293b !important; }
   * {
     -webkit-overflow-scrolling: unset;
   }
+
+  /* ── Labor Rate tab: let page scroll, don't clip in panel ── */
+  #tab-labor {
+    overflow-y: visible !important;
+    flex: unset !important;
+  }
+  #tab-labor .lr-pad {
+    padding: 28px 32px 60px !important;
+  }
+
 }
 
 </style>
