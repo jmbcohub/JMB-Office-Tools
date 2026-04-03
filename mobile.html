@@ -998,7 +998,7 @@ if('serviceWorker' in navigator){
 
 
 <button class="tab-btn active" id="tab-btn-labels" onclick="switchTab('labels',this)">Labels</button>
-<button class="tab-btn" id="tab-btn-pn" onclick="switchTab('pn',this)">Panel Schedule</button>
+<button class="tab-btn" id="tab-btn-pn" onclick="switchTab('pn',this)">Schedules</button>
 <button class="tab-btn" id="tab-btn-notes" onclick="switchTab('notes',this)">Projects</button>
 <button class="tab-btn" id="tab-btn-labor" onclick="switchTab('labor',this)">Labor Rate</button>
 
@@ -1527,21 +1527,24 @@ Import / Restore</button>
 
 <!-- ── Crew Builder ── -->
 <div class="lr-panel" id="lr-panel-builder">
-  <div class="lr-sec-row">
-    <div class="section-label">Crew Builder</div>
-    <div class="sel-wrap" style="margin-right:8px;min-width:118px;">
-      <select class="fi" id="lr-builder-trade" onchange="lrSetTrade(this.value)">
-        <option value="elec">⚡ Electrical</option>
-        <option value="tel">📡 Telecom</option>
-      </select>
+  <div style="margin-bottom:10px;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+      <div class="sel-wrap" style="flex:1;">
+        <select class="fi" id="lr-builder-trade" onchange="lrSetTrade(this.value)">
+          <option value="elec">⚡ Electrical</option>
+          <option value="tel">📡 Telecom</option>
+        </select>
+      </div>
     </div>
-    <div class="lr-bb-toggle-wrap">
-      <span class="lr-bb-toggle-lbl">Blue Book</span>
-      <label class="lr-toggle"><input type="checkbox" id="lr-bb-on" checked onchange="lrRender()"/><span class="lr-toggle-slider"></span></label>
-    </div>
-    <div class="lr-bb-toggle-wrap" style="margin-left:10px;">
-      <span class="lr-bb-toggle-lbl">Mkt Recovery</span>
-      <label class="lr-toggle"><input type="checkbox" id="lr-mr-on" onchange="lrBuildClassSel();lrRender()"/><span class="lr-toggle-slider"></span></label>
+    <div style="display:flex;align-items:center;gap:14px;">
+      <div class="lr-bb-toggle-wrap">
+        <span class="lr-bb-toggle-lbl">Blue Book</span>
+        <label class="lr-toggle"><input type="checkbox" id="lr-bb-on" checked onchange="lrRender()"/><span class="lr-toggle-slider"></span></label>
+      </div>
+      <div class="lr-bb-toggle-wrap">
+        <span class="lr-bb-toggle-lbl">Mkt Recovery</span>
+        <label class="lr-toggle"><input type="checkbox" id="lr-mr-on" onchange="lrBuildClassSel();lrRender()"/><span class="lr-toggle-slider"></span></label>
+      </div>
     </div>
   </div>
 
